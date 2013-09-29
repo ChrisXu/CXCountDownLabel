@@ -23,7 +23,7 @@ Counting down label
  * [@GitHub](https://github.com/ChrisXu1221)
  * [@Twitter](https://twitter.com/taterctl)
  * [@Mail](mailto:taterctl@gmail.com)
- 
- ##License
+
+##License
 ---
 CXCountDownLabel is available under the MIT license. See the LICENSE file for more info. 
