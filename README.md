@@ -10,13 +10,15 @@ Counting down label
 
 ```Objective-C
 
-- (id)initWithStartNumber:(NSInteger)startNumber endNumber:(NSInteger)endNumber countDownHandeler:(CXCountDownHandler)countDownHandeler;
+- (void)setStartNumber:(NSInteger)startNumber endNumber:(NSInteger)endNumber countDownHandeler:(CXCountDownHandler)countDownHandeler;
 
 - (void)start;
 - (void)pause;
 - (void)resume;
 
 ```
+
+assign `countInterval` to decide your countdown speed.
 
 ##Contact
 ---
