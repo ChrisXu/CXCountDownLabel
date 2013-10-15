@@ -26,26 +26,30 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        _countInterval = 0;
+        self.font = [UIFont systemFontOfSize:20.];
+        self.textAlignment = NSTextAlignmentCenter;
     }
     return self;
 }
 
-- (id)initWithStartNumber:(NSInteger)startNumber endNumber:(NSInteger)endNumber countDownHandeler:(CXCountDownHandler)countDownHandeler
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-    self = [self init];
+    self = [super initWithCoder:aDecoder];
     if (self) {
-        NSParameterAssert(startNumber != endNumber);
-        
-        self.startNumber = startNumber;
-        self.endNumber = endNumber;
-        
-        self.countDownHandeler = countDownHandeler;
-        
+        _countInterval = 0;
         self.font = [UIFont systemFontOfSize:20.];
         self.textAlignment = NSTextAlignmentCenter;
     }
-    return  self;
+    return self;
+}
+
+- (void)setStartNumber:(NSInteger)startNumber endNumber:(NSInteger)endNumber countDownHandeler:(CXCountDownHandler)countDownHandeler
+{
+    NSParameterAssert(startNumber != endNumber);
+    self.startNumber = startNumber;
+    self.endNumber = endNumber;
+    self.countDownHandeler = countDownHandeler;
 }
 
 #pragma mark - setter / getter
@@ -72,6 +76,15 @@
         return;
     }
     _currentNumber = currentNumber;
+}
+
+- (void)setCountInterval:(NSUInteger)countInterval
+{
+    if (_countInterval == countInterval) {
+        return;
+    }
+    
+    _countInterval = countInterval;
 }
 #pragma mark - PB
 - (void)start
@@ -107,9 +120,14 @@
 - (void)countDown
 {
     _ascending = (_endNumber > _currentNumber);
-    
     NSInteger interval = abs(_currentNumber - _endNumber);
-    NSInteger c = (int)sqrtf(interval);
+    NSInteger c = 0;
+    if (_countInterval > interval) {
+        c = interval;
+    }
+    else {
+        c = _countInterval > 0 ? _countInterval : (int)sqrtf(interval);
+    }
 
     self.currentNumber = _ascending ? _currentNumber + c : _currentNumber - c;
     self.text = [NSString stringWithFormat:@"%i",_currentNumber];

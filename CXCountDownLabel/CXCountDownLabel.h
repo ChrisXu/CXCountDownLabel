@@ -18,8 +18,8 @@ typedef void (^CXCountDownHandler)(CXCountDownLabel *label, NSInteger currentNum
 @property (nonatomic, assign) NSInteger startNumber;
 @property (nonatomic, assign) NSInteger endNumber;
 @property (nonatomic, strong, readonly) CADisplayLink *countDownTimer;
-
-- (id)initWithStartNumber:(NSInteger)startNumber endNumber:(NSInteger)endNumber countDownHandeler:(CXCountDownHandler)countDownHandeler;
+@property (nonatomic, assign) NSUInteger countInterval; // default is 0. when it is 0, use sqrtf(endNumber - startNumber) which is faster.
+- (void)setStartNumber:(NSInteger)startNumber endNumber:(NSInteger)endNumber countDownHandeler:(CXCountDownHandler)countDownHandeler;
 
 - (void)start;
 - (void)pause;

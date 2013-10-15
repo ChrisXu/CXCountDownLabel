@@ -3,6 +3,8 @@ CXCountDownLabel
 
 Counting down label
 
+![countDownLabel.gif](countDownLabel.gif)
+
 ##How to use
 ---
 

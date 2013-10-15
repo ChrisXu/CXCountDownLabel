@@ -28,14 +28,18 @@
 {
     [super viewDidLoad];
 	
-    self.cdLabel = [[CXCountDownLabel alloc] initWithStartNumber:0 endNumber:1000 countDownHandeler:^(CXCountDownLabel *label, NSInteger currentNumber, BOOL stopped) {
+    self.cdLabel = [[CXCountDownLabel alloc] init];
+    self.cdLabel.countInterval = 0;
+    [self.cdLabel setStartNumber:0 endNumber:1000 countDownHandeler:^(CXCountDownLabel *label, NSInteger currentNumber, BOOL stopped) {
         if (stopped) {
             NSLog(@"Stopped");
         }
     }];
-    
-    self.cdLabel.frame = CGRectMake( 0, 0, 320, 50);
-    
+
+    self.cdLabel.text = @"0";
+    self.cdLabel.frame = CGRectMake( 0, 20, 320, 50);
+    self.cdLabel.font = [UIFont systemFontOfSize:30.];
+    self.cdLabel.textColor = [UIColor colorWithRed:0.075 green:0.608 blue:0.914 alpha:1.000];
     [self.view addSubview:self.cdLabel];
     
 }
