@@ -1,7 +1,7 @@
 CXCountDownLabel
 ================
 
-Counting down label
+`CXCountDownLabel` is a subclass of UILabel. It provide an simple countdown animation.
 
 ![countDownLabel.gif](countDownLabel.gif)
 
