@@ -26,6 +26,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _numberFormatter = [NSNumberFormatter new];
+        _numberFormatter.numberStyle = NSNumberFormatterNoStyle;
         _countInterval = 0;
         self.font = [UIFont systemFontOfSize:20.];
         self.textAlignment = NSTextAlignmentCenter;
@@ -37,6 +39,8 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
+        _numberFormatter = [NSNumberFormatter new];
+        _numberFormatter.numberStyle = NSNumberFormatterNoStyle;
         _countInterval = 0;
         self.font = [UIFont systemFontOfSize:20.];
         self.textAlignment = NSTextAlignmentCenter;
@@ -49,7 +53,10 @@
     NSParameterAssert(startNumber != endNumber);
     self.startNumber = startNumber;
     self.endNumber = endNumber;
+    self.currentNumber = startNumber;
     self.countDownHandeler = countDownHandeler;
+    
+    self.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithInteger:_currentNumber]];
 }
 
 #pragma mark - setter / getter
@@ -86,6 +93,7 @@
     
     _countInterval = countInterval;
 }
+
 #pragma mark - PB
 - (void)start
 {
@@ -130,7 +138,8 @@
     }
 
     self.currentNumber = _ascending ? _currentNumber + c : _currentNumber - c;
-    self.text = [NSString stringWithFormat:@"%i",_currentNumber];
+    
+    self.text = [self.numberFormatter stringFromNumber:[NSNumber numberWithInteger:_currentNumber]];
     
     if (self.countDownHandeler) {
         self.countDownHandeler(self,_currentNumber,(_currentNumber == _endNumber));
