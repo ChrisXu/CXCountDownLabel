@@ -128,7 +128,7 @@
 - (void)countDown
 {
     _ascending = (_endNumber > _currentNumber);
-    NSInteger interval = abs(_currentNumber - _endNumber);
+    NSInteger interval = labs(_currentNumber - _endNumber);
     NSInteger c = 0;
     if (_countInterval > interval) {
         c = interval;
