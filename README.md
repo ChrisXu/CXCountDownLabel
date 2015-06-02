@@ -31,3 +31,6 @@ assign `countInterval` to decide your countdown speed.
 ##License
 ---
 CXCountDownLabel is available under the MIT license. See the LICENSE file for more info. 
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ChrisXu1221/cxcountdownlabel/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
